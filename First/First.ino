@@ -27,12 +27,15 @@ void shift(int pin) {
 }
 
 void select(byte disp, int post, bool state){
-
+byte base = 0b0000000000000001;
   switch (post) {
-    case 0: if(disp & 1){
+    case 0: if(disp & base){
       break;
     }else{
+      disp | base;
       
     }
+    break;
+    case 1: if(disp & )
   }
 }
