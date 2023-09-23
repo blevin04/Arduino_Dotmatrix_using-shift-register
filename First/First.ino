@@ -14,13 +14,7 @@ Serial.begin(9600);
 
 void loop() {
   // put your main code here, to run repeatedly:
-  for(int i=0; i<16;i++){
-    
-  }
-
 }
-
-
 void shift(int pin) {
   digitalWrite(latchPin, LOW);
 
@@ -30,4 +24,15 @@ void shift(int pin) {
   // turn on the output so the LEDs can light up:
   digitalWrite(latchPin, HIGH);
   delay(100);
+}
+
+void select(byte disp, int post, bool state){
+
+  switch (post) {
+    case 0: if(disp & 1){
+      break;
+    }else{
+      
+    }
+  }
 }
