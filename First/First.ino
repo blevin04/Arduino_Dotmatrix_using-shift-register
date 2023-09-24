@@ -32,10 +32,15 @@ byte base = 0b0000000000000001;
     case 0: if(disp & base){
       break;
     }else{
-      disp | base;
+      disp = disp | base;
       
     }
     break;
-    case 1: if(disp & )
+    case 1: if(disp & base<<1){
+      break;
+    }else{
+      disp = disp | base<<1;
+    }
+    case 2
   }
 }
