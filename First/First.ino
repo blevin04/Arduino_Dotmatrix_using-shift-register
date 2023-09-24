@@ -1,9 +1,7 @@
 int dataPin=8;
 int latchPin=9;
 int clockPin=10;
-
-short val=0b0000000000000000;
-
+short output;
 void setup() {
   // put your setup code here, to run once:
 pinMode(dataPin,OUTPUT);
@@ -15,10 +13,21 @@ Serial.begin(9600);
 void loop() {
   // put your main code here, to run repeatedly:
   for(int i=0;i<16;i++){
-    select(val,i,HIGH);
-    shift(val);
-    delay(250);
+    select(output,i,HIGH);
+    shift(output);
+    Serial.print(output,BIN);
+    delay(150);
   }
+  
+  for(int i=15;i>=0;i--){
+    select(output,i,LOW);
+    shift(output);
+    Serial.print(output,BIN);
+    delay(150);
+  }
+  
+    
+  
 }
 void shift(int pin) {
   digitalWrite(latchPin, LOW);
@@ -30,24 +39,28 @@ void shift(int pin) {
   delay(100);
 }
 
-void select(short bit, int index, bool state){
+short select(short bit, int index, bool state){
 short baseHigh = 0b0000000000000001;
 short baseLow =0b1111111111111110;
   if(bit & baseHigh<<index){
      if(state){
-      return bit;
+       output=bit;
+      return output;
      }else{
       short tempBit = baseLow<<index;
       short identity = tempBit | (~tempBit>>1);
       bit &= identity;
-      return bit;
+       output=bit;
+      return output;
      }
     }else{
       if(state){
         bit |=  baseHigh<<index;
-        return bit;
+        output=bit;
+        return output;
       }else{
-        return bit;
+        output=bit;
+        return output;
       }
     }
 }
