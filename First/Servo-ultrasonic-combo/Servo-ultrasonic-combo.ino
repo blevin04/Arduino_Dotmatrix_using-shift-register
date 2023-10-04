@@ -2,8 +2,8 @@
 #include <NewPing.h>
 float distance,duration;
 int iterations =12;
-int trigPin=9;
-int echoPin=10;
+int trigPin=10;
+int echoPin=9;
 int maxDist=400;
 int servoPin=8;
 int distArray[180/5];
