@@ -19,7 +19,7 @@ void loop() {
     delay(150);
   }
   
-  for(int i=15;i>=0;i--){
+   for(int i=15;i>=0;i--){
     select(output,i,LOW);
     shift(output);
     Serial.print(output,BIN);
